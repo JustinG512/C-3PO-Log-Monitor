@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
-CHANNEL_ID = os.getenv('CHANNEL_ID')
+YOUR_CHANNEL_ID = os.getenv('CHANNEL_ID')
 LOG_FILE = "/var/log/auth.log"
 client = discord.Client(intents=discord.Intents.default())
 
@@ -35,7 +35,7 @@ async def check_log_file():
 
 # Send the log message to the designated channel
 async def send_log_message(message):
-    channel = client.get_channel(int(CHANNEL_ID))
+    channel = client.get_channel(int(YOUR_CHANNEL_ID))
     await channel.send(message)
 
 # Discord bot events
