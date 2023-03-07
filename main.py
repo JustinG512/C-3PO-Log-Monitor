@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
-CHANNEL_ID = 1081735735893311498 #<-- Right click the channel you would like reporting in to get this
+CHANNEL_ID = os.getenv('CHANNEL_ID')
 LOG_FILE = "/var/log/auth.log"
 client = discord.Client(intents=discord.Intents.default())
 
@@ -35,7 +35,7 @@ async def check_log_file():
 
 # Send the log message to the designated channel
 async def send_log_message(message):
-    channel = client.get_channel(CHANNEL_ID)
+    channel = client.get_channel(int(CHANNEL_ID))
     await channel.send(message)
 
 # Discord bot events
